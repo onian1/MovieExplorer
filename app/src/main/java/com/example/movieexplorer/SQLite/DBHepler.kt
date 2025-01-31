@@ -50,12 +50,12 @@ class DBHelper(context: Context, factory:SQLiteDatabase.CursorFactory?)
 
     fun getFavouriteMovie(title: String): Cursor {
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $TITLE_COL = '$title'", null)
+        return db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $TITLE_COL = \"$title\"", null)
     }
 
     fun removeFavouriteMovie(title: String){
         val db = this.writableDatabase
-        db.execSQL("DELETE FROM $TABLE_NAME WHERE $TITLE_COL = '$title'")
+        db.execSQL("DELETE FROM $TABLE_NAME WHERE $TITLE_COL = \"$title\"")
         db.close()
     }
 }
