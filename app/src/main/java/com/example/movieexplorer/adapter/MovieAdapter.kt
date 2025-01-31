@@ -2,6 +2,7 @@ package com.example.movieexplorer.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,7 @@ import com.example.movieexplorer.SQLite.DBHelper
 import com.example.movieexplorer.databinding.ItemMovieBinding
 import com.example.movieexplorer.models.Movie
 
-class MovieAdapter(private val movieList: List<Movie>, private val context: Context?) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movieList: List<Movie>, private val context: Context?, private val favourites: Boolean) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,7 +30,20 @@ class MovieAdapter(private val movieList: List<Movie>, private val context: Cont
 
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
+            // Build the full URL for the image
+            val imageUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
+
+            // Use Glide to load the image into the ImageView
+            Glide.with(binding.root.context)
+                .load(imageUrl)
+                .into(binding.moviePoster) // Make sure this ImageView is in your layout
+
             binding.movieTitle.text = movie.title
+            if (favourites){
+                binding.setAsFavouriteBtn.visibility = View.INVISIBLE
+                return
+            }
+
             if (context != null) {
                 val db = DBHelper(context, null)
                 if (db.getFavouriteMovie(movie.title).count == 1) {
@@ -61,14 +75,6 @@ class MovieAdapter(private val movieList: List<Movie>, private val context: Cont
                     dbLocal.close()
                 }
             }
-
-            // Build the full URL for the image
-            val imageUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
-
-            // Use Glide to load the image into the ImageView
-            Glide.with(binding.root.context)
-                .load(imageUrl)
-                .into(binding.moviePoster) // Make sure this ImageView is in your layout
         }
     }
 }

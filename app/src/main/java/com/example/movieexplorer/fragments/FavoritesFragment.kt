@@ -25,7 +25,7 @@ class FavoritesFragment : Fragment() {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        movieAdapter = MovieAdapter(movieList, context)
+        movieAdapter = MovieAdapter(movieList, context, true)
         binding.recyclerView.adapter = movieAdapter
 
         fetchFavouriteMovies()
