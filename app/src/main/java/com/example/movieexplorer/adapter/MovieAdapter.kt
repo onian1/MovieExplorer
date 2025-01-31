@@ -36,7 +36,7 @@ class MovieAdapter(private val movieList: List<Movie>, private val context: Cont
                         Toast.makeText(context, "This movie is already your favourite.", Toast.LENGTH_SHORT).show()
                     }
                     else{
-                        db.addFavouriteMovie(movie.title)
+                        db.addFavouriteMovie(movie.title, movie.poster_path)
                         Toast.makeText(context, "This movie has been added to the favourites.", Toast.LENGTH_SHORT).show()
                     }
                 }

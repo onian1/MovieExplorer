@@ -17,11 +17,13 @@ class DBHelper(context: Context, factory:SQLiteDatabase.CursorFactory?)
             val TABLE_NAME = "favourite_movie"
 
             val TITLE_COL = "Title"
+
+            val POSTER_PATH_COL = "PosterPath"
         }
 
 
     override fun onCreate(db: SQLiteDatabase) {
-        val query = ("CREATE TABLE $TABLE_NAME ($TITLE_COL TEXT PRIMARY KEY)")
+        val query = ("CREATE TABLE $TABLE_NAME ($TITLE_COL TEXT PRIMARY KEY, $POSTER_PATH_COL TEXT)")
         db.execSQL(query)
     }
 
@@ -30,10 +32,11 @@ class DBHelper(context: Context, factory:SQLiteDatabase.CursorFactory?)
         onCreate(db)
     }
 
-    fun addFavouriteMovie(title: String){
+    fun addFavouriteMovie(title: String, posterPath: String){
         val values = ContentValues()
 
         values.put(TITLE_COL, title)
+        values.put(POSTER_PATH_COL, posterPath)
 
         val db = this.writableDatabase
         db.insert(TABLE_NAME, null, values)
@@ -53,5 +56,6 @@ class DBHelper(context: Context, factory:SQLiteDatabase.CursorFactory?)
     fun removeFavouriteMovie(title: String){
         val db = this.writableDatabase
         db.execSQL("DELETE FROM $TABLE_NAME WHERE $TITLE_COL = '$title'")
+        db.close()
     }
 }

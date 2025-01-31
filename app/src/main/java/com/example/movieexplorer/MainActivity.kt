@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.movieexplorer.databinding.ActivityMainBinding
 import com.example.movieexplorer.fragments.FavoritesFragment
 import com.example.movieexplorer.fragments.HomeFragment
 import com.example.movieexplorer.fragments.ProfileFragment
 import com.example.movieexplorer.fragments.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 

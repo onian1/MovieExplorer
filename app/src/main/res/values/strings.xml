@@ -4,4 +4,5 @@
     <string name="movie_poster">Movie Poster</string>
     <string name="movies">Movies</string>
     <string name="set_as_favourite">Set as favourite</string>
+    <string name="favourites">Favourites</string>
 </resources>
