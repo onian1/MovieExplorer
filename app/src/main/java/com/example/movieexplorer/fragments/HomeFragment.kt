@@ -43,13 +43,13 @@ class HomeFragment : Fragment() {
     private fun fetchMovies() {
         val apiService = RetrofitInstance.apiService
         val call = apiService.getMovies()
-        call.enqueue(object : Callback<MovieResponse> { // Use MovieResponse here
+        call.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
                     val movieResponse = response.body()
                     if (movieResponse != null) {
                         movieList.clear()
-                        movieList.addAll(movieResponse.results) // Access 'results' from MovieResponse
+                        movieList.addAll(movieResponse.results)
                         movieAdapter.notifyItemRangeChanged(0, movieResponse.results.size)
                     }
                 }

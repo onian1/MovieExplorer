@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("movie/popular")
+    @GET("movie/top_rated")
     fun getMovies(): Call<MovieResponse>
 }
