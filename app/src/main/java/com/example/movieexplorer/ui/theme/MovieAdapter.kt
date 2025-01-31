@@ -26,7 +26,6 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<Mo
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.movieTitle.text = movie.title
-            binding.movieDescription.text = movie.description
 
             // Build the full URL for the image
             val imageUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"

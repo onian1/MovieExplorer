@@ -40,8 +40,6 @@ class HomeFragment : Fragment() {
         return rootView
     }
 
-
-
     private fun fetchMovies() {
         val apiService = RetrofitInstance.apiService
         val call = apiService.getMovies()
@@ -52,7 +50,7 @@ class HomeFragment : Fragment() {
                     if (movieResponse != null) {
                         movieList.clear()
                         movieList.addAll(movieResponse.results) // Access 'results' from MovieResponse
-                        movieAdapter.notifyDataSetChanged()
+                        movieAdapter.notifyItemRangeChanged(0, movieResponse.results.size)
                     }
                 }
             }
