@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         recyclerView = rootView.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        movieAdapter = MovieAdapter(movieList)
+        movieAdapter = MovieAdapter(movieList, context)
         recyclerView.adapter = movieAdapter
 
         fetchMovies()
