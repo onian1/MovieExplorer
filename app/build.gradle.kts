@@ -9,6 +9,7 @@ android {
     namespace = "com.example.movieexplorer"
     compileSdk = 35
 
+
     defaultConfig {
         applicationId = "com.example.movieexplorer"
         minSdk = 24
@@ -17,6 +18,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TMDB_API_KEY", "\"${project.properties["tmdb_api_key"]}\"")
     }
 
     buildTypes {
@@ -37,7 +39,10 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
+        buildConfig = true
     }
+
 }
 
 dependencies {
@@ -61,6 +66,8 @@ dependencies {
     // Retrofit (API Calls)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // Glide (Image Loading)
     implementation("com.github.bumptech.glide:glide:4.12.0")
