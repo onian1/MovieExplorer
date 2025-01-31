@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import com.example.movieexplorer.databinding.ActivityMainBinding
 import com.example.movieexplorer.fragments.FavoritesFragment
 import com.example.movieexplorer.fragments.HomeFragment
-import com.example.movieexplorer.fragments.ProfileFragment
 import com.example.movieexplorer.fragments.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> loadFragment(HomeFragment())
                 R.id.nav_favorites -> loadFragment(FavoritesFragment())
                 R.id.nav_search -> loadFragment(SearchFragment())
-                R.id.nav_profile -> loadFragment(ProfileFragment())
             }
             true
         }

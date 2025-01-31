@@ -5,16 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        android:textSize="24sp"/>
+
     <!-- SearchView with a query hint to display text before user input -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:queryHint="Search for a movie..."
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <!-- Movie poster centered with some top margin -->
     <ImageView
